@@ -1,13 +1,11 @@
-const WOKCommands = require("wokcommands");
 const DiscordJS = require("discord.js");
 const { MessageEmbed } = DiscordJS;
 const WelcomeSchema = require("../models/WelcomeSchema");
 
-module.exports = (client, instance) => {
+module.exports = (client) => {
   client.on("guildMemberAdd", async (member) => {
     console.log("member joined!");
     // console.log(member);
-    // console.log(member.guild.channels.cache.get("979768070878937131"));
     const welcomeData = await WelcomeSchema.findById(member.guild.id);
     // console.log(welcomeData);
     const channel = member.guild.channels.cache.get(welcomeData.channelID);
