@@ -5,6 +5,7 @@ const WelcomeSchema = require("../models/WelcomeSchema");
 
 module.exports = (client, instance) => {
   client.on("guildMemberAdd", async (member) => {
+    console.log("member joined!");
     // console.log(member);
     // console.log(member.guild.channels.cache.get("979768070878937131"));
     const welcomeData = await WelcomeSchema.findById(member.guild.id);
