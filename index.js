@@ -1,23 +1,39 @@
 const DiscordJS = require("discord.js");
 const { Intents } = DiscordJS;
-
+const WOKCommands = require("wokcommands");
+// const mongoose = require("mongoose");
+const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
 
 const client = new DiscordJS.Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+  ],
 });
 
-client.on("ready", () => {
-  console.log("Bot is ready!");
-});
+client.on("ready", async () => {
+  // await mongoose.connect(process.env.DB_CONNECT, {
+  //   keepAlive: true,
+  // });
 
-client.on("messageCreate", (message) => {
-  if (message.content.toLowerCase() == "hi") {
-    message.reply({
-      content: "hello",
-    });
-  }
+  new WOKCommands(client, {
+    commandsDir: path.join(__dirname, "commands"),
+    featuresDir: path.join(__dirname, "features"),
+    testServers: "979768070878937128",
+    botOwners: ["969564878064979969"],
+    mongoUri: process.env.DB_CONNECT,
+    disabledDefaultCommands: [
+      "channelonly",
+      "command",
+      "language",
+      "prefix",
+      "requiredrole",
+      "slash",
+    ],
+  }).setDefaultPrefix("-");
 });
 
 client.login(process.env.BOT_TOKEN);
