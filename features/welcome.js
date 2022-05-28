@@ -34,7 +34,7 @@ module.exports = (client, instance) => {
       .setDescription(welcomeData.text.replace(/@/g, `<@${member.id}>`))
       .setFields({
         name: member.user.bot ? "Bot Account" : "\u200b",
-        value: `Accout created at ${new Date(
+        value: `Account created at ${new Date(
           member.user.createdTimestamp
         ).toLocaleDateString()}`,
       })
