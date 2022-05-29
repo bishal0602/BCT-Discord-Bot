@@ -16,7 +16,7 @@ module.exports = {
   ],
 
   callback: ({ interaction, args }) => {
-    const string = interaction.options.getString("input");
+    const string = interaction.options.getString("message");
 
     if (interaction) {
       interaction.reply({
