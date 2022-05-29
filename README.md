@@ -1,3 +1,3 @@
 # BCT-Server-Bot
 
-Discord Bot for BCT Server
+Hi! This is a Discord Bot for the BCT server. Currently, under construction...
