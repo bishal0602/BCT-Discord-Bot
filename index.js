@@ -23,8 +23,9 @@ client.on("ready", async () => {
   new WOKCommands(client, {
     commandsDir: path.join(__dirname, "commands"),
     featuresDir: path.join(__dirname, "features"),
-    testServers: "979768070878937128",
-    botOwners: ["969564878064979969"],
+    // testServers: process.env.TEST_SERVERS,
+    testServers: ["979768070878937128"],
+    botOwners: process.env.BOT_OWNERS,
     mongoUri: process.env.DB_CONNECT,
     disabledDefaultCommands: [
       "channelonly",
