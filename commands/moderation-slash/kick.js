@@ -7,7 +7,7 @@ module.exports = {
   permissions: ["KICK_MEMBERS"],
 
   slash: true,
-  testOnly: true,
+  testOnly: false,
   guildOnly: true,
 
   minArgs: 2,

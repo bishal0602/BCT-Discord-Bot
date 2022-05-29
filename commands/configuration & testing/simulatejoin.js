@@ -2,10 +2,10 @@ module.exports = {
   category: "Testing",
   description: "simulate a join",
 
-  permissions: ["ADMINISTRATOR"],
+  // permissions: ["ADMINISTRATOR"],
 
   slash: "both",
-  testOnly: true,
+  testOnly: false,
 
   callback: ({ member, client }) => {
     client.emit("guildMemberAdd", member);

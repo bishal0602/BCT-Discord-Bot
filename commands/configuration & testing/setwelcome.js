@@ -1,5 +1,5 @@
 const DiscordJS = require("discord.js");
-const WelcomeSchema = require("../models/WelcomeSchema");
+const WelcomeSchema = require("../../models/WelcomeSchema");
 module.exports = {
   category: "Configuration",
   description: "Sets the welcome channel",
@@ -10,7 +10,8 @@ module.exports = {
   expectedArgs: "<channel> <text>",
 
   slash: "both",
-  textOnly: true,
+  textOnly: false,
+  guildOnly: true,
 
   options: [
     {

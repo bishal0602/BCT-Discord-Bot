@@ -1,8 +1,8 @@
 module.exports = {
   category: "Testing",
-  description: "says name",
+  description: "Says your name",
   slash: "both",
-  testOnly: true,
+  testOnly: false,
   callback: ({ user }) => {
     return `${user.username.toUpperCase()}!`;
   },

@@ -1,5 +1,5 @@
 module.exports = {
-  category: "Testing",
+  category: "collectors",
   description: "Emoji Collector",
 
   callback: ({ message }) => {

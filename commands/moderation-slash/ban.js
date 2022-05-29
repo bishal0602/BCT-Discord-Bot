@@ -12,7 +12,8 @@ module.exports = {
   expectedArgsTypes: ["USER", "STRING", "STRING"],
 
   slash: true,
-  testOnly: true,
+  testOnly: false,
+  guildOnly: true,
 
   callback: async ({
     args,
