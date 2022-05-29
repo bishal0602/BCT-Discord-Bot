@@ -20,7 +20,6 @@ module.exports = {
   description: "Play a song",
 
   slash: true,
-  testOnly: true,
 
   options: [
     {
