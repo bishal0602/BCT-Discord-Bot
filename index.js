@@ -28,6 +28,7 @@ client.on("ready", async () => {
     botOwners: process.env.BOT_OWNERS,
     mongoUri: process.env.DB_CONNECT,
     disabledDefaultCommands: [
+      "help",
       "channelonly",
       "command",
       "language",
@@ -35,30 +36,7 @@ client.on("ready", async () => {
       "requiredrole",
       "slash",
     ],
-  })
-    .setDefaultPrefix("-")
-    .setCategorySettings([
-      {
-        name: "Fun",
-        emoji: "🎉",
-      },
-      {
-        name: "Moderation",
-        emoji: "👨‍⚖️",
-      },
-      {
-        name: "Music",
-        emoji: "🎶",
-      },
-      {
-        name: "Testing",
-        emoji: "🛠",
-      },
-      {
-        name: "Collectprs",
-        emoji: "💼",
-      },
-    ]);
+  }).setDefaultPrefix("-");
 });
 
 client.login(process.env.BOT_TOKEN);
