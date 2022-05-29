@@ -1,7 +1,7 @@
 module.exports = {
   name: "echo",
   description: "Repeats what you say!",
-  category: "fun",
+  category: "Fun",
 
   testOnly: false,
   slash: true,

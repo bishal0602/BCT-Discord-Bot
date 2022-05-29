@@ -1,5 +1,5 @@
 module.exports = {
-  category: "configuration",
+  category: "Configuration",
   description: "Sets bot status",
 
   minArgs: 1,

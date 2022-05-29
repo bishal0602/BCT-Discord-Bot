@@ -35,7 +35,30 @@ client.on("ready", async () => {
       "requiredrole",
       "slash",
     ],
-  }).setDefaultPrefix("-");
+  })
+    .setDefaultPrefix("-")
+    .setCategorySettings([
+      {
+        name: "Fun",
+        emoji: "🎉",
+      },
+      {
+        name: "Moderation",
+        emoji: "👨‍⚖️",
+      },
+      {
+        name: "Music",
+        emoji: "🎶",
+      },
+      {
+        name: "Testing",
+        emoji: "🛠",
+      },
+      {
+        name: "Collectprs",
+        emoji: "💼",
+      },
+    ]);
 });
 
 client.login(process.env.BOT_TOKEN);

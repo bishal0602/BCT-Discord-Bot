@@ -1,5 +1,5 @@
 module.exports = {
-  category: "Testing",
+  category: "Fun",
   description: "Says your name",
   slash: "both",
   testOnly: false,

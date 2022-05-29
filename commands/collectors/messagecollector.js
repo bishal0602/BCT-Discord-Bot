@@ -1,5 +1,5 @@
 module.exports = {
-  category: "collectors",
+  category: "Collectors",
   description: "Collect messages",
 
   callback: ({ message, channel }) => {
