@@ -24,7 +24,7 @@ client.on("ready", async () => {
     commandsDir: path.join(__dirname, "commands"),
     featuresDir: path.join(__dirname, "features"),
     testServers: process.env.TEST_SERVERS,
-    botOwners: "969564878064979969",
+    botOwners: process.env.BOT_OWNERS,
     mongoUri: process.env.DB_CONNECT,
     disabledDefaultCommands: [
       "channelonly",
