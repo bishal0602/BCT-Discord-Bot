@@ -31,7 +31,7 @@ module.exports = {
     }
 
     const queue = await music.getQueue({ interaction });
-    console.log(queue);
+    // console.log(queue);
     let queueList = " ";
     queue.forEach((song, index) => {
       queueList = `${queueList}\n ${index + 1}. ${song.info.title}`;
