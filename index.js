@@ -21,6 +21,9 @@ client.on("ready", async () => {
   //   keepAlive: true,
   // });
 
+  client.user.setActivity("BCT at pulchowk", {
+    type: "PLAYING",
+  });
   new WOKCommands(client, {
     commandsDir: path.join(__dirname, "commands"),
     featuresDir: path.join(__dirname, "features"),
