@@ -41,16 +41,19 @@ module.exports = {
     let song = interaction.options.getString("song");
     let channel = user.voice.channel;
 
-    music.play({
-      interaction: interaction,
-      channel: channel,
-      song: song,
-    });
-
-    embed = new MessageEmbed()
-      .setColor("#8e44ad")
-      .setTitle("Your Song Is Now Playing")
-      .setDescription(`${song} is now playing in ${channel?.name}`);
+    try {
+      music.play({
+        interaction: interaction,
+        channel: channel,
+        song: song,
+      });
+      embed = new MessageEmbed()
+        .setColor("#8e44ad")
+        .setTitle("Your Song Is Now Playing")
+        .setDescription(`${song} is now playing in ${channel?.name}`);
+    } catch (error) {
+      console.log(`Music Error: ${error}`);
+    }
 
     return embed;
   },

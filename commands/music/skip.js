@@ -29,14 +29,16 @@ module.exports = {
     if (!user.voice.channel) {
       return "Please join a Voice Channel first!";
     }
+    try {
+      music.skip({ interaction: interaction });
 
-    music.skip({ interaction: interaction });
-
-    embed = new MessageEmbed()
-      .setColor("#f4d03f")
-      .setTitle("Music Skipped!")
-      .setDescription(`The music in ${channel?.name} has been skipped`);
-
+      embed = new MessageEmbed()
+        .setColor("#f4d03f")
+        .setTitle("Music Skipped!")
+        .setDescription(`The music in ${channel?.name} has been skipped`);
+    } catch (error) {
+      console.log(`Music Error: ${error}`);
+    }
     return embed;
   },
 };

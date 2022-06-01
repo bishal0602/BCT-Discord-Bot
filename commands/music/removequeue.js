@@ -39,16 +39,18 @@ module.exports = {
     if (!user.voice.channel) {
       return "Please join a Voice Channel first!";
     }
+    try {
+      music.removeQueue({ interaction: interaction, number: number });
 
-    music.removeQueue({ interaction: interaction, number: number });
-
-    embed = new MessageEmbed()
-      .setColor("#ff0000")
-      .setTitle("Music Removed From Queue")
-      .setDescription(
-        `The song with the value ${number} has been removed from ${channel?.name}'s queue`
-      );
-
+      embed = new MessageEmbed()
+        .setColor("#ff0000")
+        .setTitle("Music Removed From Queue")
+        .setDescription(
+          `The song with the value ${number} has been removed from ${channel?.name}'s queue`
+        );
+    } catch (error) {
+      console.log(`Music Error: ${error}`);
+    }
     return embed;
   },
 };

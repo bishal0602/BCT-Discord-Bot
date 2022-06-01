@@ -29,14 +29,16 @@ module.exports = {
     if (!user.voice.channel) {
       return "Please join a Voice Channel first!";
     }
+    try {
+      music.stop({ interaction: interaction });
 
-    music.stop({ interaction: interaction });
-
-    embed = new MessageEmbed()
-      .setColor("#ff0000")
-      .setTitle("Music Stopped")
-      .setDescription(`The music in ${channel?.name} has been stopped`);
-
+      embed = new MessageEmbed()
+        .setColor("#ff0000")
+        .setTitle("Music Stopped")
+        .setDescription(`The music in ${channel?.name} has been stopped`);
+    } catch (error) {
+      console.log(`Music Error: ${error}`);
+    }
     return embed;
   },
 };

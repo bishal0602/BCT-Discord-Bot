@@ -39,15 +39,18 @@ module.exports = {
     if (!user.voice.channel) {
       return "Please join a Voice Channel first!";
     }
+    try {
+      music.jump({ interaction: interaction, number: number });
 
-    music.jump({ interaction: interaction, number: number });
-
-    embed = new MessageEmbed()
-      .setColor("#ff0000")
-      .setTitle("Music Jumped")
-      .setDescription(
-        `The queue has now been skipped to ${number}, in ${channel?.name}`
-      );
+      embed = new MessageEmbed()
+        .setColor("#ff0000")
+        .setTitle("Music Jumped")
+        .setDescription(
+          `The queue has now been skipped to ${number}, in ${channel?.name}`
+        );
+    } catch (error) {
+      console.log(`Music Error: ${error}`);
+    }
 
     return embed;
   },

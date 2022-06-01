@@ -40,14 +40,16 @@ module.exports = {
     if (!user.voice.channel) {
       return "Please join a Voice Channel first!";
     }
+    try {
+      music.repeat({ interaction: interaction, value: Switch });
 
-    music.repeat({ interaction: interaction, value: Switch });
-
-    embed = new MessageEmbed()
-      .setColor("#ff0000")
-      .setTitle("Music Repeated")
-      .setDescription(`The music in ${channel?.name} has been repeated`);
-
+      embed = new MessageEmbed()
+        .setColor("#ff0000")
+        .setTitle("Music Repeated")
+        .setDescription(`The music in ${channel?.name} has been repeated`);
+    } catch (error) {
+      console.log(`Music Error: ${error}`);
+    }
     return embed;
   },
 };

@@ -30,14 +30,16 @@ module.exports = {
     if (!user.voice.channel) {
       return "Please join a Voice Channel first!";
     }
+    try {
+      music.pause({ interaction: interaction });
 
-    music.pause({ interaction: interaction });
-
-    embed = new MessageEmbed()
-      .setColor("#ff0000")
-      .setTitle("Music Paused")
-      .setDescription(`The music in ${channel?.name} has been paused`);
-
+      embed = new MessageEmbed()
+        .setColor("#ff0000")
+        .setTitle("Music Paused")
+        .setDescription(`The music in ${channel?.name} has been paused`);
+    } catch (error) {
+      console.log(`Music Error: ${error}`);
+    }
     return embed;
   },
 };

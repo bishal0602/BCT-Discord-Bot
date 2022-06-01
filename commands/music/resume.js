@@ -29,14 +29,16 @@ module.exports = {
     if (!user.voice.channel) {
       return "Please join a Voice Channel first!";
     }
+    try {
+      music.resume({ interaction: interaction });
 
-    music.resume({ interaction: interaction });
-
-    embed = new MessageEmbed()
-      .setColor("#ff0000")
-      .setTitle("Music Resumed")
-      .setDescription(`The music in ${channel?.name} has been resumed`);
-
+      embed = new MessageEmbed()
+        .setColor("#ff0000")
+        .setTitle("Music Resumed")
+        .setDescription(`The music in ${channel?.name} has been resumed`);
+    } catch (error) {
+      console.log(`Music Error: ${error}`);
+    }
     return embed;
   },
 };

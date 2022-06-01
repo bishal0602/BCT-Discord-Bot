@@ -29,19 +29,22 @@ module.exports = {
     if (!user.voice.channel) {
       return "Please join a Voice Channel first!";
     }
+    try {
+      const queue = await music.getQueue({ interaction });
+      let queueList = " ";
+      queue.forEach((song, index) => {
+        queueList = `${queueList}\n ${index + 1}. ${song.info.title}`;
+      });
 
-    const queue = await music.getQueue({ interaction });
-    // console.log(queue);
-    let queueList = " ";
-    queue.forEach((song, index) => {
-      queueList = `${queueList}\n ${index + 1}. ${song.info.title}`;
-    });
-
-    embed = new MessageEmbed()
-      .setColor("#a6acaf")
-      .setTitle("Music Queue")
-      .setDescription(`The current queue for ${channel?.name} is ${queueList}`);
-
+      embed = new MessageEmbed()
+        .setColor("#a6acaf")
+        .setTitle("Music Queue")
+        .setDescription(
+          `The current queue for ${channel?.name} is ${queueList}`
+        );
+    } catch (error) {
+      console.log(`Music Error: ${error}`);
+    }
     return embed;
   },
 };
