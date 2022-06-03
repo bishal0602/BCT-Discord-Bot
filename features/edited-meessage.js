@@ -3,7 +3,7 @@ const { MessageEmbed } = DiscordJS;
 const EditCountSchema = require("../models/EditCountSchema");
 
 module.exports = (client) => {
-  client.on("messageUpdate", (oldMessage, newMessage) => {
+  client.on("messageUpdate", async (oldMessage, newMessage) => {
     try {
       if (!oldMessage.author) return;
       const MessageLogChannel = client.channels.cache.get("978687664612081714");
@@ -28,19 +28,21 @@ module.exports = (client) => {
           text: "Message Edited",
         });
       MessageLogChannel.send({ embeds: [editMessageEmbed] });
-      EditCountSchema.findOneAndUpdate(
+      // console.log("edit registered");
+      await EditCountSchema.findOneAndUpdate(
         {
           _id: oldMessage.author.id,
         },
         {
           username: oldMessage.author.username,
           discriminator: oldMessage.author.discriminator,
-          count: count + 1,
+          $inc: { count: 1 },
         },
         {
           upsert: true,
         }
       );
+      // console.log("edit database updated!");
     } catch (error) {
       console.log(`Edit message error: ${error}`);
     }

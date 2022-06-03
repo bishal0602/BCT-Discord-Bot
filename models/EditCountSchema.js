@@ -6,7 +6,7 @@ const EditCountSchema = new Schema({
     required: true,
     type: String,
   },
-  userName: {
+  username: {
     required: true,
     type: String,
   },
