@@ -11,17 +11,15 @@ module.exports = {
   callback: async ({ interaction }) => {
     const editCounts = await EditCountSchema.find({}).sort({ count: -1 });
     // console.log(editCounts);
-    let field = await editCounts.map((edit) => {
-      return {
-        name: "\u200b",
-        value: `${edit.username}#${edit.discriminator} :  ${edit.count}`,
-      };
+    let field = " ";
+    await editCounts.forEach((edit) => {
+      field += `${edit.username}#${edit.discriminator} :  ${edit.count}\n`;
     });
-    console.log(field);
+    // console.log(field);
     const reply = {
       color: "#0099ff",
-      title: "Edit Learboard",
-      fields: field,
+      title: "Edit Leaderboard",
+      fields: [{ name: "\u200b", value: field }],
     };
 
     await interaction.reply({ embeds: [reply] });
