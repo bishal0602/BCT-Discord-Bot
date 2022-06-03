@@ -6,6 +6,7 @@ module.exports = (client) => {
   client.on("messageUpdate", async (oldMessage, newMessage) => {
     try {
       if (!oldMessage.author) return;
+      if (oldMessage.content === newMessage.content) return;
       const MessageLogChannel = client.channels.cache.get("978687664612081714");
       const editMessageEmbed = new MessageEmbed()
         .setColor("#6F8FAF")
