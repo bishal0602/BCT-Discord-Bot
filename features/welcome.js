@@ -37,6 +37,7 @@ module.exports = (client) => {
           member.user.createdTimestamp
         ).toLocaleDateString()}`,
       })
+      .setFooter({ text: `User Id: ${member.user.id}` })
       .setTimestamp();
     channel.send({ embeds: [welcomeEmbed] });
   });
