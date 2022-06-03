@@ -28,6 +28,6 @@ module.exports = (client) => {
 };
 
 module.exports.config = {
-  displayName: "Edited Message",
-  dbName: "EDITED_MESSAGE",
+  displayName: "Deleted Message",
+  dbName: "DELETED_MESSAGE",
 };
