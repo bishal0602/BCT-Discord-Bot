@@ -1,6 +1,6 @@
 const DiscordJS = require("discord.js");
 const { MessageEmbed } = DiscordJS;
-const WelcomeSchema = require("../models/WelcomeSchema");
+const EditCountSchema = require("../models/EditCountSchema");
 
 module.exports = (client) => {
   client.on("messageUpdate", (oldMessage, newMessage) => {
@@ -28,6 +28,19 @@ module.exports = (client) => {
           text: "Message Edited",
         });
       MessageLogChannel.send({ embeds: [editMessageEmbed] });
+      await EditCountSchema.findOneAndUpdate(
+        {
+          _id: oldMessage.author.id,
+        },
+        {
+         username: oldMessage.author.username,
+         discriminator: oldMessage.author.discriminator,
+         count: count + 1,
+        },
+        {
+          upsert:true,
+        }
+      );
     } catch (error) {
       console.log(`Edit message error: ${error}`);
     }
