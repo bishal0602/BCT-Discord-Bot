@@ -28,17 +28,17 @@ module.exports = (client) => {
           text: "Message Edited",
         });
       MessageLogChannel.send({ embeds: [editMessageEmbed] });
-      await EditCountSchema.findOneAndUpdate(
+      EditCountSchema.findOneAndUpdate(
         {
           _id: oldMessage.author.id,
         },
         {
-         username: oldMessage.author.username,
-         discriminator: oldMessage.author.discriminator,
-         count: count + 1,
+          username: oldMessage.author.username,
+          discriminator: oldMessage.author.discriminator,
+          count: count + 1,
         },
         {
-          upsert:true,
+          upsert: true,
         }
       );
     } catch (error) {
