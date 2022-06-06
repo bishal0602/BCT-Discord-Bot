@@ -12,10 +12,16 @@ module.exports = (client) => {
           name: `${message.author.username}#${message.author.discriminator}`,
           iconURL: `https://cdn.discordapp.com/avatars/${message.author.id}/${message.author.avatar}.png`,
         })
-        .addFields({
-          name: "Deleted message:",
-          value: message.content,
-        })
+        .addFields(
+          {
+            name: "Deleted message:",
+            value: message.content,
+          },
+          {
+            name: "Channel: ",
+            value: `<#${message.channelId}>`,
+          }
+        )
         .setTimestamp()
         .setFooter({
           text: "Message Deleted",

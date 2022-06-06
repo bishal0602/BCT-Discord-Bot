@@ -5,6 +5,7 @@ const EditCountSchema = require("../models/EditCountSchema");
 module.exports = (client) => {
   client.on("messageUpdate", async (oldMessage, newMessage) => {
     try {
+      // console.log(oldMessage);
       if (!oldMessage.author) return;
       if (oldMessage.content === newMessage.content) return;
       const MessageLogChannel = client.channels.cache.get("978687664612081714");
@@ -22,6 +23,10 @@ module.exports = (client) => {
           {
             name: "After: ",
             value: newMessage.content,
+          },
+          {
+            name: "Channel: ",
+            value: `<#${oldMessage.channelId}>`,
           }
         )
         .setTimestamp()
