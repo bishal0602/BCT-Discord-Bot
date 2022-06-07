@@ -2,9 +2,8 @@ const DiscordJS = require("discord.js");
 const { MessageEmbed } = DiscordJS;
 const DeleteCountSchema = require("../models/DeleteCountSchema");
 
-
 module.exports = (client) => {
-  client.on("messageDelete", (message) => {
+  client.on("messageDelete", async (message) => {
     try {
       //   console.log(message);
       const MessageLogChannel = client.channels.cache.get("978687664612081714");
