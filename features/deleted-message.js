@@ -1,12 +1,14 @@
 const DiscordJS = require("discord.js");
 const { MessageEmbed } = DiscordJS;
+const DeleteCountSchema = require("../models/DeleteCountSchema");
+
 
 module.exports = (client) => {
   client.on("messageDelete", (message) => {
     try {
       //   console.log(message);
       const MessageLogChannel = client.channels.cache.get("978687664612081714");
-      const editMessageEmbed = new MessageEmbed()
+      const delMessageEmbed = new MessageEmbed()
         .setColor("#FF0000")
         .setAuthor({
           name: `${message.author.username}#${message.author.discriminator}`,
@@ -26,7 +28,20 @@ module.exports = (client) => {
         .setFooter({
           text: "Message Deleted",
         });
-      MessageLogChannel.send({ embeds: [editMessageEmbed] });
+      MessageLogChannel.send({ embeds: [delMessageEmbed] });
+      await DeleteCountSchema.findOneAndUpdate(
+        {
+          _id: message.author.id,
+        },
+        {
+          username: message.author.username,
+          discriminator: message.author.discriminator,
+          $inc: { count: 1 },
+        },
+        {
+          upsert: true,
+        }
+      );
     } catch (error) {
       console.log(`Delete message error: ${error}`);
     }
