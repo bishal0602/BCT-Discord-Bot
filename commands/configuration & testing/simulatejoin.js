@@ -7,6 +7,8 @@ module.exports = {
   slash: "both",
   testOnly: false,
 
+  guildOnly: true,
+
   callback: ({ member, client }) => {
     client.emit("guildMemberAdd", member);
     return "Join Simulated!";

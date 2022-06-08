@@ -7,6 +7,7 @@ module.exports = {
   description: "Shows the number of edits made my users",
 
   slash: true,
+  guildOnly: true,
 
   callback: async ({ interaction }) => {
     const editCounts = await EditCountSchema.find({}).sort({ count: -1 });

@@ -7,15 +7,14 @@ module.exports = {
   description: "Shows the number message deleted by my users",
 
   slash: true,
+  guildOnly: true,
 
   callback: async ({ interaction }) => {
     const deleteCounts = await DeleteCountSchema.find({}).sort({ count: -1 });
-    // console.log(editCounts);
     let field = " ";
     await deleteCounts.forEach((del) => {
       field += `${del.username}#${del.discriminator} :  ${del.count}\n`;
     });
-    // console.log(field);
     const reply = {
       color: "#FF7F7F",
       title: "Delete Leaderboard",
