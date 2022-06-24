@@ -9,7 +9,14 @@ module.exports = (client) => {
           member.message.guild.channels.cache.get("988462615468580928");
         if (message.embeds.length != 0) {
           const messageEmbed = member.message.embeds[0];
-          Archive.send({ embeds: [messageEmbed] });
+          ArchiveChannel.send({ embeds: [messageEmbed] });
+        } else if (message.attachments.size > 0) {
+          message.attachments.forEach((att) => {
+            const attachment = new MessageAttachment(att.url, att.name);
+            ArchiveChannel.send({
+              files: [attachment],
+            });
+          });
         } else {
           const colorArray = [
             "#6A0DAD",

@@ -1,5 +1,5 @@
 const DiscordJS = require("discord.js");
-const { MessageEmbed } = DiscordJS;
+const { MessageEmbed, MessageAttachment } = DiscordJS;
 
 module.exports = {
   category: "utility",
@@ -7,7 +7,7 @@ module.exports = {
 
   guildOnly: true,
   slash: true,
-
+  testOnly: true,
   options: [
     {
       name: "destination",
@@ -32,6 +32,7 @@ module.exports = {
     let serverId = messageLinkArray[messageLinkArray.length - 3];
     let channelId = messageLinkArray[messageLinkArray.length - 2];
     let messageId = messageLinkArray[messageLinkArray.length - 1];
+
     if (serverId == null || channelId == null || messageId == null) {
       interaction.reply("Invalid Message Link");
       return;
@@ -41,10 +42,17 @@ module.exports = {
       channel.messages
         .fetch(messageId)
         .then((message) => {
-          // console.log(message);
           if (message.embeds.length != 0) {
             const messageEmbed = message.embeds[0];
             destinationChannel.send({ embeds: [messageEmbed] });
+          } else if (message.attachments.size > 0) {
+            // console.log(message.attachments);
+            message.attachments.forEach((att) => {
+              const attachment = new MessageAttachment(att.url, att.name);
+              destinationChannel.send({
+                files: [attachment],
+              });
+            });
           } else {
             const messageEmbed = new MessageEmbed()
               .setColor("#6A0DAD")
