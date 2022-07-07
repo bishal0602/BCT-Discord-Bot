@@ -8,7 +8,9 @@ module.exports = (client) => {
       // console.log(oldMessage);
       if (!oldMessage.author) return;
       if (oldMessage.content === newMessage.content) return;
-      const MessageLogChannel = client.channels.cache.get("978687664612081714");
+      const MessageLogChannel =
+        oldMessage.member.guild.channels.cache.get("978687664612081714");
+      if (!MessageLogChannel) return;
       const editMessageEmbed = new MessageEmbed()
         .setColor("#6F8FAF")
         .setAuthor({

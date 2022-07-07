@@ -6,7 +6,10 @@ module.exports = (client) => {
   client.on("messageDelete", async (message) => {
     try {
       //   console.log(message);
-      const MessageLogChannel = client.channels.cache.get("978687664612081714");
+      // const MessageLogChannel = client.channels.cache.get("978687664612081714");
+      const MessageLogChannel =
+        message.member.guild.channels.cache.get("980081226520088656");
+      if (!MessageLogChannel) return;
       const delMessageEmbed = new MessageEmbed()
         .setColor("#FF0000")
         .setAuthor({
