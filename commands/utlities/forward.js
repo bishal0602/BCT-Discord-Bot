@@ -7,7 +7,7 @@ module.exports = {
 
   guildOnly: true,
   slash: true,
-  testOnly: true,
+  testOnly: false,
   options: [
     {
       name: "destination",
