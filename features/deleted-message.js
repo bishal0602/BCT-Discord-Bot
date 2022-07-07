@@ -5,7 +5,7 @@ const DeleteCountSchema = require("../models/DeleteCountSchema");
 module.exports = (client) => {
   client.on("messageDelete", async (message) => {
     try {
-      //   console.log(message);
+      // console.log(message);
       // const MessageLogChannel = client.channels.cache.get("978687664612081714");
       const MessageLogChannel =
         message.member.guild.channels.cache.get("978687664612081714");
