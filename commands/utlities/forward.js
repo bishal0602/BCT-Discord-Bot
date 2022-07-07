@@ -7,7 +7,7 @@ module.exports = {
 
   guildOnly: true,
   slash: true,
-  testOnly: false,
+  testOnly: true,
   options: [
     {
       name: "destination",
@@ -23,7 +23,7 @@ module.exports = {
     },
   ],
 
-  callback: ({ member, args, interaction }) => {
+  callback: ({ member, args, interaction, client }) => {
     // console.log(x);
     // console.log(args);
     let destinationChannel = member.guild.channels.cache.get(args[0]);
@@ -38,7 +38,7 @@ module.exports = {
       return;
     }
 
-    member.guild.channels.fetch(channelId).then((channel) => {
+    client.channels.fetch(channelId).then((channel) => {
       channel.messages
         .fetch(messageId)
         .then((message) => {

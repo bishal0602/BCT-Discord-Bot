@@ -8,7 +8,7 @@ module.exports = (client) => {
       //   console.log(message);
       // const MessageLogChannel = client.channels.cache.get("978687664612081714");
       const MessageLogChannel =
-        message.member.guild.channels.cache.get("980081226520088656");
+        message.member.guild.channels.cache.get("978687664612081714");
       if (!MessageLogChannel) return;
       const delMessageEmbed = new MessageEmbed()
         .setColor("#FF0000")
