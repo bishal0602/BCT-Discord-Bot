@@ -1,14 +1,20 @@
 const DiscordJS = require("discord.js");
 const { MessageEmbed } = DiscordJS;
 
+// Archives a message to a specific channel when reacted with Pencil-on-Note emote
+
 module.exports = (client) => {
   client.on("messageReactionAdd", (member) => {
     try {
+      const { message } = member;
+      if (member._emoji.name === "📝" && member.count > 1) {
+        return;
+      }
       if (member._emoji.name === "📝") {
         const ArchiveChannel =
-          member.message.guild.channels.cache.get("988462615468580928");
+          message.guild.channels.cache.get("988462615468580928");
         if (message.embeds.length != 0) {
-          const messageEmbed = member.message.embeds[0];
+          const messageEmbed = message.embeds[0];
           ArchiveChannel.send({ embeds: [messageEmbed] });
         } else if (message.attachments.size > 0) {
           message.attachments.forEach((att) => {
