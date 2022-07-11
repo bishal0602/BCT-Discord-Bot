@@ -62,12 +62,15 @@ module.exports = {
               })
               .setDescription(message.content);
             destinationChannel.send({ embeds: [messageEmbed] });
+            interaction.reply(`Message Forwarded to <#${args[0]}!>`);
           }
         })
         .catch((error) => {
           console.log(`Message Format Error: ${error}`);
+          interaction.reply(
+            "Sorry, some error occurred and your message could not be forwarded."
+          );
         });
     });
-    interaction.reply("Message Forwarded");
   },
 };
