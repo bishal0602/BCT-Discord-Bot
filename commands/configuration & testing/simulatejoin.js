@@ -1,6 +1,6 @@
 module.exports = {
   category: "Testing",
-  description: "simulate a join",
+  description: "Simulates user join",
 
   permissions: ["ADMINISTRATOR"],
 

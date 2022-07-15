@@ -1,6 +1,6 @@
 module.exports = {
   category: "Testing",
-  description: "Simulate a leave",
+  description: "Simulates user leave",
 
   permissions: ["ADMINISTRATOR"],
 

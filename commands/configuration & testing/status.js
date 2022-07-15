@@ -1,6 +1,6 @@
 module.exports = {
   category: "Configuration",
-  description: "Sets bot status",
+  description: "Sets bot status(owner only)",
 
   minArgs: 1,
   expectedArgs: "<status>",

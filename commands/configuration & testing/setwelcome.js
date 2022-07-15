@@ -2,7 +2,7 @@ const DiscordJS = require("discord.js");
 const WelcomeSchema = require("../../models/WelcomeSchema");
 module.exports = {
   category: "Configuration",
-  description: "Sets the welcome channel",
+  description: "Sets the welcome channel with a custom message",
 
   permissions: ["ADMINISTRATOR"],
 
