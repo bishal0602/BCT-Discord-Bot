@@ -62,7 +62,7 @@ module.exports = {
               })
               .setDescription(message.content);
             destinationChannel.send({ embeds: [messageEmbed] });
-            interaction.reply(`Message Forwarded to <#${args[0]}!>`);
+            interaction.reply(`Message Forwarded to <#${args[0]}>!`);
           }
         })
         .catch((error) => {

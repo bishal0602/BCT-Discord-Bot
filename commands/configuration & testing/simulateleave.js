@@ -1,6 +1,6 @@
 module.exports = {
   category: "Testing",
-  description: "simulate a join",
+  description: "Simulate a leave",
 
   permissions: ["ADMINISTRATOR"],
 
@@ -11,6 +11,6 @@ module.exports = {
 
   callback: ({ member, client }) => {
     client.emit("guildMemberRemove", member);
-    return "Join Simulated!";
+    return "Leave Simulated!";
   },
 };
