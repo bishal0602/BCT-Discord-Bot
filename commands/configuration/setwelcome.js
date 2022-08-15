@@ -10,7 +10,7 @@ module.exports = {
   expectedArgs: "<channel> <text>",
 
   slash: "both",
-  textOnly: false,
+  testOnly: false,
   guildOnly: true,
 
   options: [

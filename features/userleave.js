@@ -1,10 +1,12 @@
 const DiscordJS = require("discord.js");
 const { MessageEmbed } = DiscordJS;
-const WelcomeSchema = require("../models/WelcomeSchema");
+const UserLogSchema = require("../models/UserLogSchema");
 
 module.exports = (client) => {
   client.on("guildMemberRemove", async (member) => {
-    const channel = member.guild.channels.cache.get("978689652817018910");
+    const userLogData = await UserLogSchema.findById(member.guild.id);
+    if (!userLogData) return;
+    const channel = member.guild.channels.cache.get(userLogData.channelID);
     const welcomeEmbed = new MessageEmbed()
       .setColor("#FF0000")
       .setTitle(`${member.user.username}#${member.user.discriminator}`)

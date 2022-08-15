@@ -7,6 +7,7 @@ module.exports = (client) => {
     // console.log("member joined!");
     // console.log(member);
     const welcomeData = await WelcomeSchema.findById(member.guild.id);
+    if (!welcomeData) return;
     // console.log(welcomeData);
     const channel = member.guild.channels.cache.get(welcomeData.channelID);
 
