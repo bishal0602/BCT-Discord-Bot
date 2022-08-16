@@ -7,7 +7,7 @@ module.exports = (client) => {
   client.on("messageDelete", async (message) => {
     try {
       // console.log(message);
-      const messageLogData = await MessageLogSchema.findById(message.guildid);
+      const messageLogData = await MessageLogSchema.findById(message.guildId);
       if (!messageLogData) return;
       const MessageLogChannel = message.member.guild.channels.cache.get(
         messageLogData.channelID

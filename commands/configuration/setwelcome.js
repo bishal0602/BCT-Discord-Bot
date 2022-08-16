@@ -29,6 +29,9 @@ module.exports = {
   ],
 
   callback: async ({ guild, message, interaction, args }) => {
+    if (message && !message.mentions.channels.size) {
+      return `Incorrect usage!\nPlease use \`${prefix}setwelcome <channel> <welcome-message>\``;
+    }
     const target = message
       ? message.mentions.channels.first()
       : interaction.options.getChannel("channel");

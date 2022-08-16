@@ -21,6 +21,7 @@ module.exports = {
 
   callback: async ({ guild, message, interaction, args, instance, member }) => {
     let prefix = instance.getPrefix(member.guild.id);
+
     if (message && !message.mentions.channels.size) {
       return `Incorrect usage!\nPlease use \`${prefix}setmessagelog <channel>\``;
     }
