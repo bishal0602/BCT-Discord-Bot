@@ -1,6 +1,7 @@
 const DiscordJS = require("discord.js");
 const { MessageEmbed } = DiscordJS;
 const EditCountSchema = require("../models/EditCountSchema");
+const MessageLogSchema = require("../models/MessageLogSchema");
 
 module.exports = (client) => {
   client.on("messageUpdate", async (oldMessage, newMessage) => {
@@ -8,9 +9,16 @@ module.exports = (client) => {
       // console.log(oldMessage);
       if (!oldMessage.author) return;
       if (oldMessage.content === newMessage.content) return;
-      const MessageLogChannel =
-        oldMessage.member.guild.channels.cache.get("978687664612081714");
+
+      const messageLogData = await MessageLogSchema.findById(
+        oldMessage.guildId
+      );
+      if (!messageLogData) return;
+      const MessageLogChannel = oldMessage.member.guild.channels.cache.get(
+        messageLogData.channelID
+      );
       if (!MessageLogChannel) return;
+
       const editMessageEmbed = new MessageEmbed()
         .setColor("#6F8FAF")
         .setAuthor({

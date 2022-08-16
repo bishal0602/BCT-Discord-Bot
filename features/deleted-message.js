@@ -1,15 +1,19 @@
 const DiscordJS = require("discord.js");
 const { MessageEmbed } = DiscordJS;
 const DeleteCountSchema = require("../models/DeleteCountSchema");
+const MessageLogSchema = require("../models/MessageLogSchema");
 
 module.exports = (client) => {
   client.on("messageDelete", async (message) => {
     try {
       // console.log(message);
-      // const MessageLogChannel = client.channels.cache.get("978687664612081714");
-      const MessageLogChannel =
-        message.member.guild.channels.cache.get("978687664612081714");
+      const messageLogData = await MessageLogSchema.findById(message.guildid);
+      if (!messageLogData) return;
+      const MessageLogChannel = message.member.guild.channels.cache.get(
+        messageLogData.channelID
+      );
       if (!MessageLogChannel) return;
+      // const MessageLogChannel = client.channels.cache.get("978687664612081714");
       const delMessageEmbed = new MessageEmbed()
         .setColor("#FF0000")
         .setAuthor({
