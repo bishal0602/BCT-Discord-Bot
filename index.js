@@ -35,9 +35,9 @@ client.on("ready", async () => {
       "channelonly",
       "command",
       "language",
-      "prefix",
+      // "prefix",
       "requiredrole",
-      "slash",
+      // "slash",
     ],
   }).setDefaultPrefix("-");
 });
