@@ -8,7 +8,7 @@ module.exports = {
   slash: true,
 
   callback: ({ interaction, user }) => {
-    console.log(user);
+    // console.log(user);
     const initialMessage = new MessageEmbed()
       .setColor("#FFD700")
       .setTitle("Flipping a coin.....")
